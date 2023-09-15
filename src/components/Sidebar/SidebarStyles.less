@@ -1,0 +1,18 @@
+@import "../../index.less";
+
+.sidebar {
+    .flexbox('column', 'flex-start', 'center');
+    height: 100vh;
+    width: 20vw;
+    padding: 20px;
+
+    .link {
+        .flexbox('row', 'center', 'center');
+        height: 20px;
+        width: 100%;
+
+        .highlighted {
+            color: red;
+        }
+    }
+}
