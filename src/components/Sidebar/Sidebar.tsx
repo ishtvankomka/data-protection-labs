@@ -16,7 +16,7 @@ const SidebarLink: React.FC<SidebarLinkComponentProps> = ({ lab }) => {
         >
             <div>
                 <p>
-                    {lab}
+                    #{lab}
                 </p>
             </div>
         </Link>

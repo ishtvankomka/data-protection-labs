@@ -1,18 +1,27 @@
 @import "../../index.less";
 
 .sidebar {
-    .flexbox('column', 'flex-start', 'center');
+    .flexbox(column, flex-start, center);
     height: 100vh;
     width: 20vw;
     padding: 20px;
 
-    .link {
-        .flexbox('row', 'center', 'center');
-        height: 20px;
-        width: 100%;
+    a {
+        color: black;
+        text-decoration: none;
+    }
 
-        .highlighted {
-            color: red;
-        }
+    .link {
+        .flexbox(row, center, center);
+        height: 20px;
+        width: 50%;
+        margin: 10px 0px;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: deeppink;
+    }
+
+    .highlighted {
+        background-color: greenyellow;
     }
 }
