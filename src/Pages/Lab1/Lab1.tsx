@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Lab1Styles.less'
 
 const alphabet: string = "абвгдеєжзиіїйклмнопрстуфхцчшщьюяАБВГДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ -,.;!?";
 const shift: number = 3;
@@ -85,7 +84,7 @@ export const Lab1: React.FC = () => {
     }, [inputDecrypt])
 
     return (
-        <div className='lab1'>
+        <div className='lab'>
             <div className="container">
                 <div className="sub-container">
                     <p className="headings">Encrypt: </p>

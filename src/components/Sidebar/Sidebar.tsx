@@ -29,6 +29,10 @@ const Sidebar: React.FC = () => {
         <div className='sidebar'>
             <SidebarLink lab={1} />
             <SidebarLink lab={2} />
+            <SidebarLink lab={3} />
+            <SidebarLink lab={4} />
+            <SidebarLink lab={5} />
+            <SidebarLink lab={6} />
         </div>
     );
 };
