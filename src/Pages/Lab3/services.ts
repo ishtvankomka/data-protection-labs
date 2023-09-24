@@ -85,7 +85,7 @@ export function generateRSAKeys(p: number, q: number): { publicKey: number; priv
 
     return { publicKey, privateKey, modulus };
 }
-
+/* 
 // Example usage
 const p = 13; // Replace with your prime numbers
 const q = 41; // Replace with your prime numbers
@@ -108,3 +108,4 @@ const decryptedText = decryptRSA([191, 139, 117, 270, 458, 346, 1, 79], privateK
 console.log("Original Text:", plaintext);
 console.log("Encrypted Data:", encryptedData);
 console.log("Decrypted Text:", decryptedText);
+ */
