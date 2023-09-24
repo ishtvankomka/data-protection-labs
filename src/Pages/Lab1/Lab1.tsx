@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 const alphabet: string = "абвгдеєжзиіїйклмнопрстуфхцчшщьюяАБВГДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ -,.;!?";
 const shift: number = 3;
 
-const textToUnicode = (text: string): string => {
-    let unicodeText: string = '';
+const textToNumbers = (text: string): string => {
+    let numbers: number[] = [];
     for (let i: number = 0; i < text.length; i++) {
-        const char: number = text.charCodeAt(i);
-        unicodeText += char.toString(16).toUpperCase() + ' ';
+        const alphabetNumber: number = alphabet.indexOf(text[i]) + 1;
+        numbers.push(alphabetNumber);
     }
-    return unicodeText.trim();
+    return numbers.join(', ');
 }
 
 const encrypt = (text: string): string => {
@@ -62,7 +62,7 @@ export const Lab1: React.FC = () => {
         if (inputEncrypt.length) {
             const encrypted = encrypt(inputEncrypt)
             setOutputEncrypt(encrypted)
-            setUnicodeEncrypt(textToUnicode(encrypted))
+            setUnicodeEncrypt(textToNumbers(encrypted))
         } else {
             setOutputEncrypt('...')
             setUnicodeEncrypt('...')
@@ -76,7 +76,7 @@ export const Lab1: React.FC = () => {
         if (inputDecrypt.length) {
             const decrypted = decrypt(inputDecrypt)
             setOutputDecrypt(decrypted)
-            setUnicodeDecrypt(textToUnicode(decrypted))
+            setUnicodeDecrypt(textToNumbers(decrypted))
         } else {
             setOutputDecrypt('...')
             setUnicodeDecrypt('...')
@@ -85,6 +85,7 @@ export const Lab1: React.FC = () => {
 
     return (
         <div className='lab'>
+            <h1>Lab 1</h1>
             <div className="container">
                 <div className="sub-container">
                     <p className="headings">Encrypt: </p>
@@ -100,7 +101,7 @@ export const Lab1: React.FC = () => {
                     <p>{outputEncrypt}</p>
                 </div>
                 <div className="sub-container">
-                    <p className="headings">Unicode:</p>
+                    <p className="headings">Charcodes:</p>
                     <p>{unicodeEncrypt}</p>
                 </div>
             </div>
@@ -119,7 +120,7 @@ export const Lab1: React.FC = () => {
                     <p>{outputDecrypt}</p>
                 </div>
                 <div className="sub-container">
-                    <p className="headings">Unicode:</p>
+                    <p className="headings">Charcodes:</p>
                     <p>{unicodeDecrypt}</p>
                 </div>
             </div>
