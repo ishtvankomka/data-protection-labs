@@ -39,4 +39,19 @@ p {
         align-items: flex-start;
         margin-bottom: 50px;
     }
+
+    .button {
+        .flexbox(row, center, center);
+        margin: 10px 0px;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: deeppink;
+        cursor: pointer;
+
+        &:hover,
+        &:active {
+            background-color: greenyellow;
+            color: black;
+        }
+    }
 }
