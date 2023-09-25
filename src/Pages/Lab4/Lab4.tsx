@@ -74,7 +74,6 @@ export const Lab4: React.FC = () => {
                             value={decrypt}
                             onChange={(e) => { setDecrypt(e.target.value) }}
                         />
-
                     </div>
                     <div className="sub-container">
                         <p className="headings">Decrypt text characters: {realCharCount(decrypt)}</p>
