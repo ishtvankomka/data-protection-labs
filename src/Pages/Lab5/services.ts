@@ -1,11 +1,9 @@
-// Define the Feistel function (in this case, a simple XOR operation)
 function feistelFunction(left: number, right: number, roundKey: number): [number, number] {
     const newLeft = right;
     const newRight = left ^ (right + roundKey);
     return [newLeft, newRight];
 }
 
-// Pad text to a multiple of blockLength
 function padText(text: string, blockLength: number): string {
     const paddingLength = blockLength - (text.length % blockLength);
     if (paddingLength !== blockLength) {
@@ -15,18 +13,8 @@ function padText(text: string, blockLength: number): string {
     return text;
 }
 
-// Remove padding from text
-function unpadText(text: string): string | null {
-    const paddingLength = text.charCodeAt(text.length - 1);
-    if (paddingLength >= 1 && paddingLength <= text.length) {
-        return text.slice(0, -paddingLength);
-    }
-    return null; // Padding is invalid
-}
-
-// Encrypt function
 export function feistelEncrypt(plaintext: string, numRounds: number, key: number): string {
-    const blockLength = 2; // Feistel works on 2-character blocks
+    const blockLength = 2;
     let ciphertext = '';
 
     plaintext = padText(plaintext, blockLength);
@@ -44,7 +32,6 @@ export function feistelEncrypt(plaintext: string, numRounds: number, key: number
     return ciphertext;
 }
 
-// Decrypt function
 export function feistelDecrypt(ciphertext: string, numRounds: number, key: number): string {
     const blockLength = 2;
     let plaintext = '';
@@ -53,7 +40,7 @@ export function feistelDecrypt(ciphertext: string, numRounds: number, key: numbe
         let [left, right] = [ciphertext.charCodeAt(i), ciphertext.charCodeAt(i + 1)];
 
         for (let round = 0; round < numRounds; round++) {
-            const roundKey = key; // Same key is used for decryption
+            const roundKey = key; 
             [right, left] = feistelFunction(right, left, roundKey);
         }
 
@@ -61,11 +48,5 @@ export function feistelDecrypt(ciphertext: string, numRounds: number, key: numbe
         plaintext += block;
     }
 
-    const unpaddedText = unpadText(plaintext);
-    if (unpaddedText !== null) {
-        return unpaddedText;
-    } else {
-        console.error("Invalid padding");
-        return ''; // Handle the error as needed
-    }
+    return plaintext;
 }

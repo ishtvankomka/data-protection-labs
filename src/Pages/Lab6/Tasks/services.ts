@@ -3,14 +3,12 @@ const generateRandomNumber = (n: number): bigint => {
     const randomBytes = new Uint8Array(bytesNeeded);
     window.crypto.getRandomValues(randomBytes);
 
-    // Create a bitmask to trim the number to the desired bit length
     const mask = (1n << BigInt(n)) - 1n;
 
     let result = 0n;
     for (let i = 0; i < bytesNeeded; i++)
         result = (result << 8n) | BigInt(randomBytes[i]);
 
-    // Apply the bitmask to ensure the number has the desired bit length
     return result & mask;
 }
 
@@ -30,7 +28,7 @@ const isPrime = (n: bigint, k: number = 5): boolean => {
     }
 
     for (let i = 0; i < k; i++) {
-        const a = BigInt(Math.floor(Math.random() * (Number(n) - 2))) + 2n; // Random integer in [2, n-2]
+        const a = BigInt(Math.floor(Math.random() * (Number(n) - 2))) + 2n; 
         let x = modPow(a, sCopy, n);
         if (x === 1n || x === n - 1n)
             continue;
@@ -85,8 +83,8 @@ export const generatePrimeNumber = (t: number, n: number) => {
 export const generatePrimesInRange = (start: number, end: number) => {
     const timeStarted = performance.now();
     if (start < 2)
-        start = 2; // Ensure we start from the smallest prime number (2)
-
+        start = 2; 
+    
     const filledArray = new Array(end + 1).fill(true);
     const result: number[] = [];
 
